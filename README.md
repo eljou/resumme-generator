@@ -1,8 +1,8 @@
 # express-server-starter
 
-ES6 express server project starter
-
-A simple app to serve as a starter ExpressJS server. The server code is all writen in es6 and transpiled with babel for development build stages.
+Resumme Generator Fullstack project
+Server is made using expressjs
+Client is made using create-react-app
 
 Note:
 This project includes ESLint and Prettier configurations
@@ -13,6 +13,7 @@ ENV=development
 DB_USER=value
 DB_PASS=value
 DB_HOST=mongolab_url
+JWT_SECRET=secret
 
 2- `yarn install` or `npm install`
 
