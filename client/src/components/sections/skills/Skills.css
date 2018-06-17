@@ -1,0 +1,23 @@
+.section.skills ul.list-of-skills-categories {
+    list-style-type: none;
+}
+
+.section.skills ul.list-of-skills-categories h4 {
+    margin-bottom: 5px;
+}
+
+.section.skills ul.list-of-skills-categories > li {
+    margin-bottom: 10px;
+}
+.section.skills ul.list-of-skills-categories > li:last-of-type {
+    margin-bottom: 0;
+}
+
+.section.skills ul.list-of-skills {
+    padding-left: 10px;
+}
+
+.section.skills ul.list-of-skills li {
+    display: flex;
+    justify-content: space-between;
+}

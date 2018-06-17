@@ -1,0 +1,30 @@
+.h1-size {
+    font-size: 2rem;
+    font-weight: 900;
+}
+.h2-size {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.normal-size {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.tag {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.tag small {
+    font-weight: normal;
+}
+.tag p {
+    display: inline;
+}
+.tag i {
+    width: 1rem;
+    text-align: center;
+}

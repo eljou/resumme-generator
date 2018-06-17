@@ -1,0 +1,33 @@
+#personal-basics{
+    width: 70%;
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-columns: 1fr 2fr;
+    /* grid-template-rows: 1fr 1fr; */
+    grid-template-areas: 
+    "avatar basic-info basic-info"
+    "avatar aditional-info aditional-info";
+    padding: 10px;
+}
+
+.avatar {
+    grid-area: avatar;
+    margin-right: 20px;
+}
+
+.avatar img {
+    border-radius: 50%;
+    width: 100%;
+    margin: auto 0;
+}
+
+.basic-info {
+    grid-area: basic-info;
+}
+.basic-info hr {
+    margin-top: 5px;
+}
+
+.aditional-info {
+    grid-area: aditional-info;
+}

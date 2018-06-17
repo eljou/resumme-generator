@@ -1,0 +1,8 @@
+.section.languages ul {
+    list-style-type: none;
+}
+
+.section.languages ul li {
+    display: flex;
+    justify-content: space-between;
+}

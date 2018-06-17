@@ -1,0 +1,13 @@
+.section.social-networks h3 {
+    padding-top: 20px;
+}
+
+ul.social-networks-list {
+    list-style-type: none;
+}
+ul.social-networks-list li {
+    margin: 6px 0px;
+}
+ul.social-networks-list li i {
+    width: 20px;
+}
