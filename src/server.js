@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import path from 'path'
 import express from 'express'
 import cors from 'cors'
 import logger from 'morgan'
@@ -15,6 +16,7 @@ app.use(cors())
 app.use(logger(conf.logger))
 app.use(express.json())
 app.use(passport.initialize())
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 setPassportStrategy(passport)
 setRoutes(app)
