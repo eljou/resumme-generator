@@ -1,15 +1,24 @@
 import { isEmpty } from '../functions'
-import { safeFields, validateEmail, validateEmpty } from './validationUtils'
+import {
+	safeFields,
+	validateSequentialy,
+	validateEmail,
+	validateEmpty
+} from './validationUtils'
 
 export default fields => {
-	const saneFileds = safeFields(['email', 'password'], fields)
+	const saneFields = safeFields(['email', 'password'], fields)
 
 	const errors = {}
 	let validationMsg
-	validationMsg = validateEmail(saneFileds.email, 'Email')
+	validationMsg = validateSequentialy(
+		[validateEmpty, validateEmail],
+		saneFields.email,
+		'Email'
+	)
 	if (validationMsg) errors.email = validationMsg
 
-	validationMsg = validateEmpty(saneFileds.password, 'Password')
+	validationMsg = validateEmpty(saneFields.password, 'Password')
 	if (validationMsg) errors.password = validationMsg
 
 	return {
