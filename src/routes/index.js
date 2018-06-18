@@ -6,7 +6,7 @@ const setRoutes = app => {
 		res.json({ message: 'Home page' })
 	})
 
-	app.use('/api', authRoutes)
+	app.use('/api/users', authRoutes)
 
 	// Fallback error handler middleware
 	/* eslint-disable */

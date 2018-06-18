@@ -67,3 +67,5 @@ export const loginUser = async data => {
 		throw new Error(`JsonWebToken Error:: ${error}`)
 	}
 }
+
+export const currentUser = data => getResponseObject(SUCCESS, data)

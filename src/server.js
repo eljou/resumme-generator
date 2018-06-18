@@ -2,8 +2,10 @@ import 'babel-polyfill'
 import express from 'express'
 import cors from 'cors'
 import logger from 'morgan'
+import passport from 'passport'
 
 import conf from './config'
+import setPassportStrategy from './config/passportStrategy'
 import setRoutes from './routes'
 import setUpDatabaseConnection from './services/db'
 
@@ -12,7 +14,9 @@ const app = express()
 app.use(cors())
 app.use(logger(conf.logger))
 app.use(express.json())
+app.use(passport.initialize())
 
+setPassportStrategy(passport)
 setRoutes(app)
 
 app.listen(conf.port, err => {
