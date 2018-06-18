@@ -1,13 +1,28 @@
-import { SUCCESS, CREATED, NOT_FOUND, CONFLICT } from '../utils/statusCodes'
+import {
+	SUCCESS,
+	CREATED,
+	NOT_FOUND,
+	CONFLICT,
+	BAD_REQUEST
+} from '../utils/statusCodes'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import User from '../models/User'
 import config from '../config'
 
+import { getResponseObject } from '../utils/functions'
+import validateRegistrationInput from '../utils/validation/registerData'
+import validateLoginInput from '../utils/validation/loginData'
+
 // Auth methods service
 export const registerUser = async newUser => {
+	const { errors, isValid } = validateRegistrationInput(newUser)
+	if (!isValid) {
+		return getResponseObject(BAD_REQUEST, errors)
+	}
+
 	if (await User.findOne({ email: newUser.email })) {
-		return { statusCode: CONFLICT, data: 'User already exists' }
+		return getResponseObject(CONFLICT, 'User already exists')
 	}
 
 	try {
@@ -18,19 +33,25 @@ export const registerUser = async newUser => {
 	}
 
 	const savedUser = await new User({ ...newUser }).save()
-	return { statusCode: CREATED, data: savedUser }
+	return getResponseObject(CREATED, savedUser)
 }
 
-export const loginUser = async ({ email, password }) => {
+export const loginUser = async data => {
+	const { errors, isValid } = validateLoginInput(data)
+	if (!isValid) {
+		return getResponseObject(BAD_REQUEST, errors)
+	}
+
+	const { email, password } = data
 	const user = await User.findOne({ email })
 	if (!user) {
-		return { statusCode: NOT_FOUND, data: 'User not found please register' }
+		return getResponseObject(NOT_FOUND, 'User not found please register')
 	}
 
 	// Check Password
 	const isMatch = await bcrypt.compare(password, user.password)
 	if (!isMatch) {
-		return { statusCode: CONFLICT, data: 'Password incorrect' }
+		return getResponseObject(CONFLICT, 'Password incorrect')
 	}
 
 	const payload = {
@@ -41,7 +62,7 @@ export const loginUser = async ({ email, password }) => {
 	}
 	try {
 		const token = await jwt.sign(payload, config.jwtSecret, { expiresIn: 3600 })
-		return { statusCode: SUCCESS, data: `Bearer ${token}` }
+		return getResponseObject(SUCCESS, `Bearer ${token}`)
 	} catch (error) {
 		throw new Error(`JsonWebToken Error:: ${error}`)
 	}
