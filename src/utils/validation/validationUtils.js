@@ -27,5 +27,8 @@ export const validateEquals = val1 => (val2, label) =>
 export const validateEmail = (str, label) =>
 	!Validator.isEmail(str) ? `${label} is invalid` : null
 
+export const validateURL = (str, label) =>
+	!Validator.isURL(str) ? `${label} is invalid` : null
+
 export const validateEmpty = (str, label) =>
 	!Validator.isEmpty(str) ? null : `${label} field is required`

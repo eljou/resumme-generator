@@ -24,8 +24,8 @@ const ProfileSchema = new mongoose.Schema({
 	],
 	socialNetworks: [
 		{
-			network: { type: String },
-			profileURL: { type: String }
+			network: { type: String, requided: true },
+			profileURL: { type: String, required: true }
 		}
 	],
 	experience: [

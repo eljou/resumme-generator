@@ -1,10 +1,10 @@
-import { isEmpty } from '../functions'
+import { isEmpty } from '../../functions'
 import {
 	safeFields,
 	validateSequentialy,
 	validateEmpty,
 	validateRange
-} from './validationUtils'
+} from '../validationUtils'
 
 export default fields => {
 	const saneFields = safeFields(['resumme'], fields)

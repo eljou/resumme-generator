@@ -32,4 +32,58 @@ profileRouter.delete(
 	safeRoute(Profile.delete)
 )
 
+// @route   POST api/profile/experience
+// @desc    Add experience status to profile
+// @access  Private
+profileRouter.post(
+	'/experience',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.addExperience)
+)
+
+// @route   DELETE api/profile/experience/:id
+// @desc    Remove experience status from profile
+// @access  Private
+profileRouter.delete(
+	'/experience/:id',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.removeExperience)
+)
+
+// @route   POST api/profile/education
+// @desc    Add education status to profile
+// @access  Private
+profileRouter.post(
+	'/education',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.addEducation)
+)
+
+// @route   DELETE api/profile/education/:id
+// @desc    Remove education status from profile
+// @access  Private
+profileRouter.delete(
+	'/education/:id',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.removeEducation)
+)
+
+// @route   POST api/profile/socials
+// @desc    Add social network status to profile
+// @access  Private
+profileRouter.post(
+	'/socials',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.addSocialNetwork)
+)
+
+// @route   DELETE api/profile/socials/:id
+// @desc    Remove socials network field from profile
+// @access  Private
+profileRouter.delete(
+	'/socials/:id',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.removeSocialNetwork)
+)
+
 export default profileRouter
