@@ -1,6 +1,7 @@
-import { SUCCESS, CREATED, BAD_REQUEST } from '../utils/statusCodes'
+import { SUCCESS, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/statusCodes'
 import { responseObject } from '../utils/functions'
 import Profile from '../models/Profile'
+import User from '../models/User'
 import validateProfileInput from '../utils/validation/profileData'
 
 export const saveProfile = async (user, profileData) => {
@@ -29,4 +30,22 @@ export const saveProfile = async (user, profileData) => {
 
 	const newProfile = await new Profile(profileFields).save()
 	return responseObject(CREATED, newProfile)
+}
+
+export const getProfile = async user => {
+	const profile = await Profile.findOne({ user: user._id })
+	if (!profile) {
+		return responseObject(NOT_FOUND, 'Profile not found')
+	}
+	return responseObject(SUCCESS, profile)
+}
+
+export const deleteProfile = async user => {
+	const profile = await Profile.findOneAndRemove({ user: user._id })
+	if (!profile) {
+		return responseObject(BAD_REQUEST, 'Profile not found')
+	}
+
+	const userToRemove = await User.findOneAndRemove({ _id: profile.user })
+	return responseObject(SUCCESS, { userToRemove, profile })
 }

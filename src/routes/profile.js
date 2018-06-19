@@ -5,12 +5,31 @@ import { safeRoute } from '../utils/functions'
 
 const profileRouter = Router()
 
+// @route   POST api/profile
+// @desc    Create profile basics information
+// @access  Private
 profileRouter.post(
 	'/',
 	passport.authenticate('jwt', { session: false }),
 	safeRoute(Profile.save)
 )
-// profileRouter.get('', safeRoute())
-// profileRouter.put('', safeRoute())
+
+// @route   GET api/profile
+// @desc    Get profile basics information
+// @access  Private
+profileRouter.get(
+	'/',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.get)
+)
+
+// @route   DELETE api/profile
+// @desc    Delete profile information
+// @access  Private
+profileRouter.delete(
+	'/',
+	passport.authenticate('jwt', { session: false }),
+	safeRoute(Profile.delete)
+)
 
 export default profileRouter
