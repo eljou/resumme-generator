@@ -10,7 +10,7 @@ import jwt from 'jsonwebtoken'
 import User from '../models/User'
 import config from '../config'
 
-import { getResponseObject } from '../utils/functions'
+import { responseObject } from '../utils/functions'
 import validateRegistrationInput from '../utils/validation/registerData'
 import validateLoginInput from '../utils/validation/loginData'
 
@@ -18,11 +18,11 @@ import validateLoginInput from '../utils/validation/loginData'
 export const registerUser = async newUser => {
 	const { errors, isValid } = validateRegistrationInput(newUser)
 	if (!isValid) {
-		return getResponseObject(BAD_REQUEST, errors)
+		return responseObject(BAD_REQUEST, errors)
 	}
 
 	if (await User.findOne({ email: newUser.email })) {
-		return getResponseObject(CONFLICT, 'User already exists')
+		return responseObject(CONFLICT, 'User already exists')
 	}
 
 	try {
@@ -33,25 +33,26 @@ export const registerUser = async newUser => {
 	}
 
 	const savedUser = await new User({ ...newUser }).save()
-	return getResponseObject(CREATED, savedUser)
+	return responseObject(CREATED, savedUser)
 }
 
+// Login user
 export const loginUser = async data => {
 	const { errors, isValid } = validateLoginInput(data)
 	if (!isValid) {
-		return getResponseObject(BAD_REQUEST, errors)
+		return responseObject(BAD_REQUEST, errors)
 	}
 
 	const { email, password } = data
 	const user = await User.findOne({ email })
 	if (!user) {
-		return getResponseObject(NOT_FOUND, 'User not found please register')
+		return responseObject(NOT_FOUND, 'User not found please register')
 	}
 
 	// Check Password
 	const isMatch = await bcrypt.compare(password, user.password)
 	if (!isMatch) {
-		return getResponseObject(CONFLICT, 'Password incorrect')
+		return responseObject(CONFLICT, 'Password incorrect')
 	}
 
 	const payload = {
@@ -62,10 +63,10 @@ export const loginUser = async data => {
 	}
 	try {
 		const token = await jwt.sign(payload, config.jwtSecret, { expiresIn: 3600 })
-		return getResponseObject(SUCCESS, `Bearer ${token}`)
+		return responseObject(SUCCESS, `Bearer ${token}`)
 	} catch (error) {
 		throw new Error(`JsonWebToken Error:: ${error}`)
 	}
 }
 
-export const currentUser = data => getResponseObject(SUCCESS, data)
+export const currentUser = data => responseObject(SUCCESS, data)

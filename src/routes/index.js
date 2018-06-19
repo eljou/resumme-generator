@@ -1,12 +1,14 @@
 import { SERVER_ERROR } from '../utils/statusCodes'
-import authRoutes from './auth'
+import authRouter from './auth'
+import profileRouter from './profile'
 
 const setRoutes = app => {
 	app.get('/', (req, res) => {
 		res.json({ message: 'Home page' })
 	})
 
-	app.use('/api/users', authRoutes)
+	app.use('/api/users', authRouter)
+	app.use('/api/profile', profileRouter)
 
 	// Fallback error handler middleware
 	/* eslint-disable */
