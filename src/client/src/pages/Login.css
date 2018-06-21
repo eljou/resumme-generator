@@ -1,0 +1,16 @@
+#login-page {
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+	background-color: antiquewhite;
+}
+
+#login-page .login-form {
+	border: 1px solid black;
+	margin: 0 auto;
+	width: 50%;
+}
+
+#login-page .login-form button {
+	width: 100%;
+}

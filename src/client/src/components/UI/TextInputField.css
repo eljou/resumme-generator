@@ -1,0 +1,12 @@
+.form-field {
+	display: flex;
+	width: 100%;
+}
+
+.form-field label {
+	flex-grow: 1;
+}
+
+.form-field input {
+	flex-grow: 2;
+}
