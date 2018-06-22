@@ -1,16 +1,46 @@
 #login-page {
-	margin: 0 auto;
-	width: 80%;
+	background-image: url('../img/login-background.jpg');
+	background-position: top;
+	background-size: cover;
+	height: 450px;
+	width: 70%;
+	margin: 10% auto;
+	border-radius: 10px;
+}
+
+#login-page h1 {
+	background-color: rgba(0, 0, 0, 0.24);
+	color: #ffffff;
+	text-shadow: 0px 1px 5px #000000;
+	border-radius: 10px 10px 0 0;
 	text-align: center;
-	background-color: antiquewhite;
+	padding: 50px 0px;
+	font-size: 2.5rem;
+	font-variant-caps: all-petite-caps;
 }
 
-#login-page .login-form {
-	border: 1px solid black;
+#login-page form.login-form {
+	background-color: #ffffff;
+	height: 310px;
+	border-radius: 0 0 10px 10px;
+	padding-top: 40px;
+}
+
+#login-page form.login-form .form-fields {
+	width: 70%;
 	margin: 0 auto;
-	width: 50%;
 }
 
-#login-page .login-form button {
+.form-fields .options-wrapper {
+	margin-left: 102px;
+}
+.form-fields .options-wrapper .remember-me {
+	display: flex;
+	justify-content: space-between;
+}
+.form-fields .options-wrapper .remember-me label {
 	width: 100%;
+}
+.form-fields .options-wrapper .remember-me a {
+	padding-top: 10px;
 }

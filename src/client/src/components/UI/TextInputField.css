@@ -1,12 +1,16 @@
 .form-field {
 	display: flex;
-	width: 100%;
 }
-
 .form-field label {
-	flex-grow: 1;
+	width: 100px;
+	text-align: right;
 }
-
 .form-field input {
 	flex-grow: 2;
+	border-bottom: 1px solid #b2b2b2;
+}
+.form-field input:focus {
+	border: none;
+	outline: none;
+	border-bottom: 2px solid #57b846;
 }
