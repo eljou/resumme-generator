@@ -23,7 +23,7 @@
 	background-color: #ffffff;
 	height: 310px;
 	border-radius: 0 0 10px 10px;
-	padding-top: 40px;
+	padding-top: 30px;
 }
 
 #login-page form.login-form .form-fields {
@@ -42,5 +42,14 @@
 	width: 100%;
 }
 .form-fields .options-wrapper .remember-me a {
-	padding-top: 10px;
+	padding-top: 8px;
+}
+
+#login-page .general-errors {
+	background-color: rgb(241, 163, 163);
+	text-align: center;
+	transition: all ease-out 1s;
+}
+#login-page .general-errors p {
+	margin-bottom: 20px;
 }

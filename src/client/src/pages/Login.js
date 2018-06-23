@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './Login.css'
 
 import TextInputField from '../components/UI/TextInputField'
+import { loginUser } from '../actions/authActions'
 
 class Login extends Component {
 	state = {
@@ -10,20 +14,43 @@ class Login extends Component {
 		errors: {}
 	}
 
+	componentWillMount = () => {
+		// console.log(this.state)
+		// console.log(this.props)
+	}
+
+	componentWillReceiveProps = nextProps => {
+		if (nextProps.errors) {
+			this.setState({ errors: nextProps.errors })
+		}
+	}
+
 	onChangeHandler = e => {
 		this.setState({ [e.target.name]: e.target.value })
 	}
 
 	onSubmitHandler = e => {
 		e.preventDefault()
-		console.log(this.state)
+		const { email, password } = this.state
+
+		this.props.loginUser({ email, password })
 	}
 
 	render() {
+		const { errors } = this.state
+		const errorMsg =
+			errors.generalError === 'UNF' ? (
+				<p>
+					User not found please <Link to="/register">Register</Link>
+				</p>
+			) : (
+				<p>{errors.generalError}</p>
+			)
 		return (
 			<section id="login-page">
 				<h1>Sign in</h1>
 				<form className="login-form" onSubmit={this.onSubmitHandler}>
+					<div className="general-errors">{errorMsg}</div>
 					<div className="form-fields">
 						<TextInputField
 							labelText="Email :"
@@ -33,7 +60,7 @@ class Login extends Component {
 							value={this.state.email}
 							placeholder="email address..."
 							onChange={this.onChangeHandler}
-							required
+							error={errors.email}
 						/>
 						<TextInputField
 							labelText="Password :"
@@ -43,7 +70,7 @@ class Login extends Component {
 							value={this.state.password}
 							placeholder="password address..."
 							onChange={this.onChangeHandler}
-							required
+							error={errors.password}
 						/>
 						<div className="options-wrapper">
 							<div className="remember-me">
@@ -51,7 +78,7 @@ class Login extends Component {
 									<input type="checkbox" id="remb" />
 									<label htmlFor="remb">Remember me</label>
 								</div>
-								<a href="/forgot">Forgot password?</a>
+								<Link to="/forgot">Forgot password?</Link>
 							</div>
 							<button className="btn btn-success" type="submit">
 								Log In
@@ -63,4 +90,17 @@ class Login extends Component {
 		)
 	}
 }
-export default Login
+
+Login.propTypes = {
+	loginUser: PropTypes.func.isRequired,
+	errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+	errors: state.authReducer.errors
+})
+
+export default connect(
+	mapStateToProps,
+	{ loginUser }
+)(Login)

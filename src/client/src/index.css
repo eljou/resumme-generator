@@ -26,7 +26,6 @@ label {
 input,
 label {
 	height: 40px;
-	margin-bottom: 10px;
 }
 
 .btn {
@@ -72,4 +71,8 @@ h6 {
 .container {
 	width: 80%;
 	margin: 0 auto;
+}
+
+.error-msg {
+	color: #cc2222;
 }

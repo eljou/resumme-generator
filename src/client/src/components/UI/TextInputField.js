@@ -4,18 +4,22 @@ import PropTypes from 'prop-types'
 import './TextInputField.css'
 
 const TextInputField = props => {
-	const { labelText, ...inputProps } = props
+	const { labelText, error, ...inputProps } = props
 
 	return (
 		<div className="form-field">
 			<label htmlFor={inputProps.id}>{labelText}</label>
-			<input {...inputProps} />
+			<div className="input-field">
+				<input {...inputProps} />
+				{error ? <p className="error-msg">{error}</p> : null}
+			</div>
 		</div>
 	)
 }
 
 TextInputField.propTypes = {
-	labelText: PropTypes.string.isRequired
+	labelText: PropTypes.string.isRequired,
+	error: PropTypes.string
 }
 
 export default TextInputField

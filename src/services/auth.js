@@ -46,24 +46,24 @@ export const loginUser = async data => {
 	const { email, password } = data
 	const user = await User.findOne({ email })
 	if (!user) {
-		return responseObject(NOT_FOUND, 'User not found please register')
+		return responseObject(NOT_FOUND, { generalError: 'UNF' })
 	}
 
 	// Check Password
 	const isMatch = await bcrypt.compare(password, user.password)
 	if (!isMatch) {
-		return responseObject(CONFLICT, 'Password incorrect')
+		return responseObject(CONFLICT, { generalError: 'Password incorrect' })
 	}
 
 	const payload = {
-		id: user._id,
 		name: user.name,
 		lastNames: user.lastNames,
-		avatar: user.avatar
+		avatar: user.avatar,
+		date: user.date
 	}
 	try {
 		const token = await jwt.sign(payload, config.jwtSecret, { expiresIn: 3600 })
-		return responseObject(SUCCESS, `Bearer ${token}`)
+		return responseObject(SUCCESS, { token: `Bearer ${token}` })
 	} catch (error) {
 		throw new Error(`JsonWebToken Error:: ${error}`)
 	}

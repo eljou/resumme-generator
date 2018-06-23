@@ -1,16 +1,23 @@
 .form-field {
 	display: flex;
+	margin-bottom: 10px;
 }
 .form-field label {
 	width: 100px;
 	text-align: right;
 }
-.form-field input {
+.form-field .input-field {
 	flex-grow: 2;
+}
+.form-field .input-field input {
+	width: 100%;
 	border-bottom: 1px solid #b2b2b2;
 }
-.form-field input:focus {
+.form-field .input-field input:focus {
 	border: none;
 	outline: none;
 	border-bottom: 2px solid #57b846;
+}
+.form-field .input-field .error-msg {
+	font-size: 0.8rem;
 }
