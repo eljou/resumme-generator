@@ -1,14 +1,8 @@
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
-import { getAction } from '../util/utilFunctions'
+import { getAction, setAuthTokenHeader } from '../util/utilFunctions'
 import { SET_ERRORS, SET_CURRENT_USER } from './actionTypes'
-
-const setAuthToken = token => {
-	token
-		? (axios.defaults.headers.common['Authorization'] = token)
-		: delete axios.defaults.headers.common.Authorization
-}
 
 export const loginUser = userData => async dispatch => {
 	try {
@@ -19,7 +13,7 @@ export const loginUser = userData => async dispatch => {
 		/* eslint-disable */
 		localStorage.setItem('jwtToken', token)
 		/* eslint-enable */
-		setAuthToken(token)
+		setAuthTokenHeader(token)
 
 		const tokenDecoded = jwtDecode(token)
 		dispatch(getAction(SET_CURRENT_USER, tokenDecoded))
@@ -28,3 +22,11 @@ export const loginUser = userData => async dispatch => {
 		dispatch(getAction(SET_ERRORS, error.response.data))
 	}
 }
+
+export const logOutUser = () => dispatch => {
+	localStorage.removeItem('jwtToken') //eslint-disable-line
+	setAuthTokenHeader(false)
+	dispatch(setCurrentUser({}))
+}
+
+export const setCurrentUser = user => getAction(SET_CURRENT_USER, user)

@@ -1,31 +1,30 @@
 .navbar {
-    width: 100%;
-    background-color: #333;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	width: 100%;
+	background-color: #333;
 }
 
 .navbar .menu {
-    display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+	display: flex;
+	justify-content: flex-end;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .navbar .menu li a {
-    color: #fff;
-    display: block;
-    text-decoration: none;
-    padding: .8em 1em;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	padding: 0.8em 1em;
 }
 .navbar .menu li a:hover {
-    background: #ff6347;
-    color: #fff;
+	background: #ff6347;
+	color: #fff;
 }
 .navbar .menu li a:active {
-    background: #cc5337;
+	background: #cc5337;
 }
 
 .resumee-brand {
-    margin-right: auto;
+	margin-right: auto;
 }

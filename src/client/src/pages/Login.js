@@ -53,7 +53,7 @@ class Login extends Component {
 			)
 		return (
 			<section id="login-page">
-				<h1>Sign in</h1>
+				<h1>Log In</h1>
 				<form className="login-form" onSubmit={this.onSubmitHandler}>
 					<div className="general-errors">{errorMsg}</div>
 					<div className="form-fields">
@@ -63,7 +63,7 @@ class Login extends Component {
 							name="email"
 							type="email"
 							value={this.state.email}
-							placeholder="email address..."
+							placeholder="Email address..."
 							onChange={this.onChangeHandler}
 							error={errors.email}
 						/>
@@ -73,7 +73,7 @@ class Login extends Component {
 							name="password"
 							type="password"
 							value={this.state.password}
-							placeholder="password address..."
+							placeholder="Password..."
 							onChange={this.onChangeHandler}
 							error={errors.password}
 						/>

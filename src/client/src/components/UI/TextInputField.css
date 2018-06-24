@@ -7,7 +7,7 @@
 	text-align: right;
 }
 .form-field .input-field {
-	flex-grow: 2;
+	flex-grow: 1;
 }
 .form-field .input-field input {
 	width: 100%;
