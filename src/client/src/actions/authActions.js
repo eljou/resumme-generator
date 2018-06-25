@@ -4,6 +4,16 @@ import jwtDecode from 'jwt-decode'
 import { getAction, setAuthTokenHeader } from '../util/utilFunctions'
 import { SET_ERRORS, SET_CURRENT_USER } from './actionTypes'
 
+export const registerUser = (userData, history) => async dispatch => {
+	try {
+		await axios.post('/api/users/register', userData)
+		history.push('/login')
+	} catch (error) {
+		console.log(error)
+		dispatch(getAction(SET_ERRORS, error.response.data))
+	}
+}
+
 export const loginUser = userData => async dispatch => {
 	try {
 		const response = await axios.post('/api/users/login', userData)

@@ -22,7 +22,7 @@ export const registerUser = async newUser => {
 	}
 
 	if (await User.findOne({ email: newUser.email })) {
-		return responseObject(CONFLICT, 'User already exists')
+		return responseObject(CONFLICT, { generalError: 'User already exists' })
 	}
 
 	try {

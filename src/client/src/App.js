@@ -10,7 +10,7 @@ import Store from './store'
 import NavBar from './components/navigation/NavBar'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Profile from './pages/Profile'
+import Landing from './pages/Landing'
 import Footer from './components/sections/footer/Footer'
 
 // Check for previously logged in user
@@ -35,7 +35,7 @@ class App extends Component {
 					<div>
 						<NavBar />
 						<main>
-							<Route exact path="/" component={Profile} />
+							<Route exact path="/" component={Landing} />
 							<Route path="/login" component={Login} />
 							<Route exact path="/register" component={Register} />
 						</main>

@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import './Register.css'
 import TextInputField from '../components/UI/TextInputField'
+import { registerUser } from '../actions/authActions'
 
 class Register extends Component {
 	state = {
@@ -10,8 +13,23 @@ class Register extends Component {
 		email: '',
 		password: '',
 		passwordConfirm: '',
-		avatar: '',
 		errors: {}
+	}
+
+	componentDidMount() {
+		if (this.props.isAuthenticated) {
+			this.props.history.push('/')
+		}
+	}
+
+	componentWillReceiveProps = nextProps => {
+		if (nextProps.isAuthenticated) {
+			this.props.history.push('/')
+		}
+
+		if (nextProps.errors) {
+			this.setState({ errors: nextProps.errors })
+		}
 	}
 
 	onChangeHandler = e => {
@@ -20,11 +38,20 @@ class Register extends Component {
 
 	onSubmitHandler = e => {
 		e.preventDefault()
-		// const { name, lastNames, email, password, passwordConfirm, avatar } = this.state
 
-		console.log(this.state)
+		this.props.registerUser(
+			{
+				name: this.state.name,
+				lastNames: this.state.lastNames,
+				email: this.state.email,
+				password: this.state.password,
+				passwordConfirm: this.state.passwordConfirm
+			},
+			this.props.history
+		)
 	}
 
+	// TODO: Missing required fields
 	render() {
 		const { errors } = this.state
 		const errorMsg = <p>{errors.generalError}</p>
@@ -96,4 +123,19 @@ class Register extends Component {
 	}
 }
 
-export default Register
+Register.propTypes = {
+	history: PropTypes.object.isRequired,
+	registerUser: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool.isRequired,
+	errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+	isAuthenticated: state.authReducer.isAuthenticated,
+	errors: state.authReducer.errors
+})
+
+export default connect(
+	mapStateToProps,
+	{ registerUser }
+)(Register)

@@ -2,7 +2,7 @@
 	background-image: url('../img/login-background.jpg');
 	background-position: top;
 	background-size: cover;
-	height: 550px;
+	height: 600px;
 	width: 70%;
 	margin: 5% auto;
 	border-radius: 10px;
@@ -21,7 +21,7 @@
 
 #register-page form.register-form {
 	background-color: #ffffff;
-	height: 410px;
+	height: 460px;
 	border-radius: 0 0 10px 10px;
 	padding-top: 30px;
 }
