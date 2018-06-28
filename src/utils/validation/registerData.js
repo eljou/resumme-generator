@@ -24,13 +24,6 @@ export default fields => {
 	if (validationMsg) errors.name = validationMsg
 
 	validationMsg = validateSequentialy(
-		[validateEmpty, validateRange(2, 30)],
-		saneFields.lastNames,
-		'Last Names'
-	)
-	if (validationMsg) errors.lastNames = validationMsg
-
-	validationMsg = validateSequentialy(
 		[validateEmpty, validateEmail],
 		saneFields.email,
 		'Email'

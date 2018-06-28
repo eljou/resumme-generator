@@ -16,13 +16,13 @@ class Login extends Component {
 
 	componentWillMount = () => {
 		if (this.props.isAuthenticated) {
-			this.props.history.push('/')
+			this.props.history.push('/profile')
 		}
 	}
 
 	componentWillReceiveProps = nextProps => {
 		if (nextProps.isAuthenticated) {
-			this.props.history.push('/')
+			this.props.history.push('/profile')
 		}
 
 		if (nextProps.errors) {
@@ -66,6 +66,7 @@ class Login extends Component {
 							placeholder="Email address..."
 							onChange={this.onChangeHandler}
 							error={errors.email}
+							required
 						/>
 						<TextInputField
 							labelText="Password :"
@@ -76,6 +77,7 @@ class Login extends Component {
 							placeholder="Password..."
 							onChange={this.onChangeHandler}
 							error={errors.password}
+							required
 						/>
 						<div className="options-wrapper">
 							<div className="remember-me">
@@ -104,8 +106,8 @@ Login.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	isAuthenticated: state.authReducer.isAuthenticated,
-	errors: state.authReducer.errors
+	isAuthenticated: state.auth.isAuthenticated,
+	errors: state.auth.errors
 })
 
 export default connect(

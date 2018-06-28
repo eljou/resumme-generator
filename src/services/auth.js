@@ -37,13 +37,13 @@ export const registerUser = async newUser => {
 }
 
 // Login user
-export const loginUser = async data => {
-	const { errors, isValid } = validateLoginInput(data)
+export const loginUser = async userData => {
+	const { errors, isValid } = validateLoginInput(userData)
 	if (!isValid) {
 		return responseObject(BAD_REQUEST, errors)
 	}
 
-	const { email, password } = data
+	const { email, password } = userData
 	const user = await User.findOne({ email })
 	if (!user) {
 		return responseObject(NOT_FOUND, { generalError: 'UNF' })

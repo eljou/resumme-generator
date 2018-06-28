@@ -70,6 +70,7 @@ class Register extends Component {
 							placeholder="Name..."
 							onChange={this.onChangeHandler}
 							error={errors.name}
+							required
 						/>
 						<TextInputField
 							labelText="Last Names :"
@@ -90,6 +91,7 @@ class Register extends Component {
 							placeholder="Email address..."
 							onChange={this.onChangeHandler}
 							error={errors.email}
+							required
 						/>
 						<TextInputField
 							labelText="Password :"
@@ -100,6 +102,7 @@ class Register extends Component {
 							placeholder="Password..."
 							onChange={this.onChangeHandler}
 							error={errors.password}
+							required
 						/>
 						<TextInputField
 							labelText="Confirm Password :"
@@ -110,6 +113,7 @@ class Register extends Component {
 							placeholder="Password confirmation..."
 							onChange={this.onChangeHandler}
 							error={errors.passwordConfirm}
+							required
 						/>
 						<div className="options-wrapper">
 							<button className="btn btn-success" type="submit">
@@ -131,8 +135,8 @@ Register.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	isAuthenticated: state.authReducer.isAuthenticated,
-	errors: state.authReducer.errors
+	isAuthenticated: state.auth.isAuthenticated,
+	errors: state.auth.errors
 })
 
 export default connect(

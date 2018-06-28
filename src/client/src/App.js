@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { setAuthTokenHeader } from './util/utilFunctions'
 import jwtDecode from 'jwt-decode'
 import { logOutUser, setCurrentUser } from './actions/authActions'
+import PrivateRoute from './components/common/PrivateRoute'
 
 import './App.css'
 import Store from './store'
@@ -11,7 +12,9 @@ import NavBar from './components/navigation/NavBar'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Landing from './pages/Landing'
+import Profile from './pages/Profile'
 import Footer from './components/sections/footer/Footer'
+import NotFound from './pages/NotFound'
 
 // Check for previously logged in user
 const token = localStorage.getItem('jwtToken') //eslint-disable-line
@@ -35,9 +38,13 @@ class App extends Component {
 					<div>
 						<NavBar />
 						<main>
-							<Route exact path="/" component={Landing} />
-							<Route path="/login" component={Login} />
-							<Route exact path="/register" component={Register} />
+							<Switch>
+								<Route exact path="/" component={Landing} />
+								<Route path="/login" component={Login} />
+								<Route path="/register" component={Register} />
+								<PrivateRoute path="/profile" component={Profile} />
+								<Route path="*" component={NotFound} />
+							</Switch>
 						</main>
 						<Footer />
 					</div>

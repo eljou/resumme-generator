@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './NavBar.css'
 
@@ -10,7 +10,6 @@ const Aux = props => props.children
 
 class NavBar extends Component {
 	onLogOutClick = () => {
-		console.log('going to log out')
 		this.props.logOutUser()
 	}
 
@@ -22,26 +21,28 @@ class NavBar extends Component {
 				<nav className="navbar">
 					<ul className="menu" role="navigation">
 						<li className="resumee-brand">
-							<Link to="/">Resumme Generator</Link>
+							<NavLink to="/" exact>
+								Resumme Generator
+							</NavLink>
 						</li>
 						{isAuthenticated ? (
 							<Aux>
 								<li>
-									<Link to="/account">{user.name}</Link>
+									<NavLink to="/account">{user.name}</NavLink>
 								</li>
 								<li>
-									<Link to="/" onClick={this.onLogOutClick}>
+									<NavLink to="/" onClick={this.onLogOutClick}>
 										Log out
-									</Link>
+									</NavLink>
 								</li>
 							</Aux>
 						) : (
 							<Aux>
 								<li>
-									<Link to="/login">Login</Link>
+									<NavLink to="/login">Login</NavLink>
 								</li>
 								<li>
-									<Link to="/register">Register</Link>
+									<NavLink to="/register">Register</NavLink>
 								</li>
 							</Aux>
 						)}
@@ -59,11 +60,13 @@ NavBar.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	isAuthenticated: state.authReducer.isAuthenticated,
-	user: state.authReducer.user
+	isAuthenticated: state.auth.isAuthenticated,
+	user: state.auth.user
 })
 
-export default connect(
-	mapStateToProps,
-	{ logOutUser }
-)(NavBar)
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{ logOutUser }
+	)(NavBar)
+)

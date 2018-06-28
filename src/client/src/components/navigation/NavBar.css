@@ -24,6 +24,9 @@
 .navbar .menu li a:active {
 	background: #cc5337;
 }
+.navbar .menu li a.active {
+	background: rgba(255, 255, 255, 0.2);
+}
 
 .resumee-brand {
 	margin-right: auto;
