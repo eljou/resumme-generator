@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import GeneralSection from '../components/sections/GeneralSection'
-import ProfileHeader from '../components/sections/header/ProfileHeader'
-import Summary from '../components/sections/summary/Summary'
-import WorkExperience from '../components/sections/work_experience/WorkExperience'
-import Education from '../components/sections/education/Education'
-import Languages from '../components/sections/languages/Languages'
-import Skills from '../components/sections/skills/Skills'
+import GeneralSection from '../components/profile/GeneralSection'
+import ProfileHeader from '../components/profile/header/ProfileHeader'
+import Summary from '../components/profile/summary/Summary'
+import WorkExperience from '../components/profile/work_experience/WorkExperience'
+import Education from '../components/profile/education/Education'
+import Languages from '../components/profile/languages/Languages'
+import Skills from '../components/profile/skills/Skills'
 
 import './Profile.css'
-import Hobbies from '../components/sections/hobbies/Hobbies'
-import SocialNetworks from '../components/sections/social_networks/SocialNetworks'
+import Hobbies from '../components/profile/hobbies/Hobbies'
+import SocialNetworks from '../components/profile/social_networks/SocialNetworks'
 
 export default class Profile extends Component {
 	state = {

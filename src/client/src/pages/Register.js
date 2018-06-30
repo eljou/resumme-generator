@@ -84,7 +84,7 @@ class Register extends Component {
 						/>
 						<TextInputField
 							labelText="Email :"
-							id="login-email"
+							id="register-email"
 							name="email"
 							type="email"
 							value={this.state.email}
@@ -95,7 +95,7 @@ class Register extends Component {
 						/>
 						<TextInputField
 							labelText="Password :"
-							id="login-password"
+							id="register-password"
 							name="password"
 							type="password"
 							value={this.state.password}
@@ -106,7 +106,7 @@ class Register extends Component {
 						/>
 						<TextInputField
 							labelText="Confirm Password :"
-							id="login-passwordConfirm"
+							id="register-passwordConfirm"
 							name="passwordConfirm"
 							type="password"
 							value={this.state.passwordConfirm}

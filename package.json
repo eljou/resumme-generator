@@ -4,8 +4,10 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "babel-node src/server.js",
-		"dev": "nodemon --ignore src/client/ src/server.js --exec babel-node",
+		"dev": "concurrently \"yarn run client_dev\" \"yarn run server_dev\" ",
+		"client_dev": "npm start --prefix src/client",
+		"server_start": "babel-node src/server.js",
+		"server_dev": "nodemon --ignore src/client/ src/server.js --exec babel-node",
 		"build": "babel src --out-dir dist --source-maps",
 		"serve": "node dist/server.js"
 	},

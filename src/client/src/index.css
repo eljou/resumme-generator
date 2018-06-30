@@ -1,14 +1,40 @@
+:root {
+	--primary-0: #4181bb;
+	--primary-1: #9ec9f0;
+	--primary-2: #68a3d8;
+	--primary-3: #24649e;
+	--primary-4: #15446e;
+
+	--secondary-0: #4d5ac3;
+	--secondary-1: #a4adf2;
+	--secondary-2: #727edd;
+	--secondary-3: #2f3da7;
+	--secondary-4: #1c2775;
+
+	--terciary-0: #38b9a0;
+	--terciary-1: #97f0de;
+	--terciary-2: #5fd7c0;
+	--terciary-3: #1a9c82;
+	--terciary-4: #0e6d5a;
+
+	--font-color-primary: #444;
+	--font-color-secondary: #ddd;
+	--page-background-color: #efefef;
+	--placeholder-color: #b8b8b8;
+	--error-msg-color: hsl(0, 71%, 47%);
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	font-family: 'Poppins', sans-serif;
 	font-size: 14px;
 	box-sizing: border-box;
-	color: #666;
+	color: var(--font-color-primary);
 }
 
 body {
-	background-color: #ddd;
+	background-color: var(--secondary-3);
 }
 
 input {
@@ -17,7 +43,7 @@ input {
 	padding: 0 5px;
 }
 input::placeholder {
-	color: #b8b8b8;
+	color: var(--placeholder-color);
 }
 label {
 	padding: 0 10px;
@@ -32,20 +58,23 @@ label {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 20px;
 	height: 40px;
 	min-width: 140px;
 	font-size: 16px;
 	border-radius: 25px;
 	border: none;
 }
+.btn:focus {
+	outline: 0;
+}
 .btn-success {
-	background-color: #57b846;
+	background-color: var(--terciary-0);
 	transition: background-color ease-in 0.2s;
-	color: #ffffff;
+	color: var(--terciary-1);
 }
 .btn-success:hover {
-	background-color: #333333;
+	background-color: var(--terciary-4);
+	color: var(--terciary-1);
 	cursor: pointer;
 }
 
@@ -74,5 +103,5 @@ h6 {
 }
 
 .error-msg {
-	color: #cc2222;
+	color: var(--error-msg-color);
 }

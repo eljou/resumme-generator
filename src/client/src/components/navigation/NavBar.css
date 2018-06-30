@@ -1,6 +1,6 @@
 .navbar {
 	width: 100%;
-	background-color: #333;
+	background-color: var(--primary-4);
 }
 
 .navbar .menu {
@@ -12,20 +12,21 @@
 }
 
 .navbar .menu li a {
-	color: #fff;
+	color: var(--primary-1);
 	display: block;
 	text-decoration: none;
 	padding: 0.8em 1em;
 }
 .navbar .menu li a:hover {
-	background: #ff6347;
-	color: #fff;
+	background: var(--secondary-1);
+	color: var(--secondary-4);
 }
 .navbar .menu li a:active {
-	background: #cc5337;
+	background: var(--primary-1);
 }
 .navbar .menu li a.active {
-	background: rgba(255, 255, 255, 0.2);
+	background: var(--primary-1);
+	color: var(--primary-4);
 }
 
 .resumee-brand {

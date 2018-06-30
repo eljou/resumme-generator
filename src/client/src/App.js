@@ -13,6 +13,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Landing from './pages/Landing'
 import Profile from './pages/Profile'
+import Account from './pages/Account'
 import Footer from './components/sections/footer/Footer'
 import NotFound from './pages/NotFound'
 
@@ -35,14 +36,15 @@ class App extends Component {
 		return (
 			<Provider store={Store}>
 				<Router>
-					<div>
+					<div id="app">
 						<NavBar />
-						<main>
+						<main className="container">
 							<Switch>
 								<Route exact path="/" component={Landing} />
 								<Route path="/login" component={Login} />
 								<Route path="/register" component={Register} />
 								<PrivateRoute path="/profile" component={Profile} />
+								<PrivateRoute path="/account" component={Account} />
 								<Route path="*" component={NotFound} />
 							</Switch>
 						</main>

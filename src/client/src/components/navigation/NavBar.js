@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink, Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './NavBar.css'
 
@@ -31,9 +31,9 @@ class NavBar extends Component {
 									<NavLink to="/account">{user.name}</NavLink>
 								</li>
 								<li>
-									<NavLink to="/" onClick={this.onLogOutClick}>
+									<Link to="/" onClick={this.onLogOutClick}>
 										Log out
-									</NavLink>
+									</Link>
 								</li>
 							</Aux>
 						) : (
