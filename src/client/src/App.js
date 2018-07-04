@@ -14,7 +14,7 @@ import Register from './pages/Register'
 import Landing from './pages/Landing'
 import Profile from './pages/Profile'
 import Account from './pages/Account'
-import Footer from './components/sections/footer/Footer'
+import Footer from './components/common/footer/Footer'
 import NotFound from './pages/NotFound'
 
 // Check for previously logged in user
