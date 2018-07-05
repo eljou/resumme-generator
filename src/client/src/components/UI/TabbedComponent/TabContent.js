@@ -12,10 +12,10 @@ const TabContent = ({ id, active, children, label }) => (
 )
 
 TabContent.propTypes = {
-	id: PropTypes.number.isRequired,
-	label: PropTypes.string.isRequired,
-	active: PropTypes.string.isRequired,
-	children: PropTypes.isRequired
+	id: PropTypes.number,
+	label: PropTypes.object.isRequired,
+	active: PropTypes.string,
+	children: PropTypes.object.isRequired
 }
 
 export default TabContent

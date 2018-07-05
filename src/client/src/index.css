@@ -63,15 +63,21 @@ label {
 	font-size: 16px;
 	border-radius: 25px;
 	border: none;
+	transition: background-color ease-in 0.2s;
 }
 .btn:focus {
 	outline: 0;
 }
 .btn-success {
 	background-color: var(--terciary-0);
-	transition: background-color ease-in 0.2s;
 	color: var(--terciary-1);
 }
+.btn:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: var(--font-color-secondary);
+	cursor: pointer;
+}
+
 .btn-success:hover {
 	background-color: var(--terciary-4);
 	color: var(--terciary-1);

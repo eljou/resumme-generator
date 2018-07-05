@@ -16,35 +16,43 @@ class Account extends Component {
 
 		return (
 			<div id="account-page">
-				<TabbedComponent>
-					<TabContent label={tabsOptions[0]}>
-						<BasicInfo />
-					</TabContent>
-					<TabContent label={tabsOptions[1]}>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti
-							sapiente earum modi nihil iure temporibus amet, architecto, et id
-							perspiciatis maiores error quos laborum, dicta cum nostrum optio
-							soluta quam!
-						</p>
-					</TabContent>
-					<TabContent label={tabsOptions[2]}>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti
-							sapiente earum modi nihil iure temporibus amet, architecto, et id
-							perspiciatis maiores error quos laborum, dicta cum nostrum optio
-							soluta quam!
-						</p>
-					</TabContent>
-					<TabContent label={tabsOptions[3]}>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti
-							sapiente earum modi nihil iure temporibus amet, architecto, et id
-							perspiciatis maiores error quos laborum, dicta cum nostrum optio
-							soluta quam!
-						</p>
-					</TabContent>
-				</TabbedComponent>
+				<form onSubmit={() => console.log('submitting')}>
+					<div className="page-actions">
+						<button className="btn btn-success" type="submit">
+							Submit
+						</button>
+						<button className="btn">Reset</button>
+					</div>
+					<TabbedComponent>
+						<TabContent label={tabsOptions[0]}>
+							<BasicInfo />
+						</TabContent>
+						<TabContent label={tabsOptions[1]}>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Deleniti sapiente earum modi nihil iure temporibus amet,
+								architecto, et id perspiciatis maiores error quos laborum, dicta
+								cum nostrum optio soluta quam!
+							</p>
+						</TabContent>
+						<TabContent label={tabsOptions[2]}>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Deleniti sapiente earum modi nihil iure temporibus amet,
+								architecto, et id perspiciatis maiores error quos laborum, dicta
+								cum nostrum optio soluta quam!
+							</p>
+						</TabContent>
+						<TabContent label={tabsOptions[3]}>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Deleniti sapiente earum modi nihil iure temporibus amet,
+								architecto, et id perspiciatis maiores error quos laborum, dicta
+								cum nostrum optio soluta quam!
+							</p>
+						</TabContent>
+					</TabbedComponent>
+				</form>
 			</div>
 		)
 	}
